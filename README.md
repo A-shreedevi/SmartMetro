@@ -70,9 +70,73 @@ pom.xml
 
    `http://localhost:8080`
 
-## API Testing
+## Transaction API Documentation
 
-Use Postman to test the REST API endpoints for user management, cards, stations, routes, recharges, fare deductions, and transaction history.
+Base URL: `http://localhost:8080`
+
+### 1. Recharge a Metro Card
+
+- **Method:** POST
+- **Endpoint:** `/api/transactions/recharge/{cardId}`
+- **Parameter:** `amount` (query parameter)
+
+Example request:
+
+```http
+POST http://localhost:8080/api/transactions/recharge/1?amount=100
+```
+
+Adds money to the specified metro card and returns the transaction details.
+
+### 2. Deduct Journey Fare
+
+- **Method:** POST
+- **Endpoint:** `/api/transactions/fare/{cardId}`
+- **Parameter:** `fare` (query parameter)
+
+Example request:
+
+```http
+POST http://localhost:8080/api/transactions/fare/1?fare=30
+```
+
+Deducts the journey fare from the specified metro card and returns the transaction details.
+
+### 3. Retrieve All Transactions
+
+- **Method:** GET
+- **Endpoint:** `/api/transactions`
+
+Example request:
+
+```http
+GET http://localhost:8080/api/transactions
+```
+
+Returns the transaction history available in the system.
+
+### 4. Retrieve Transactions for a Specific Card
+
+- **Method:** GET
+- **Endpoint:** `/api/transactions/card/{cardId}`
+
+Example request:
+
+```http
+GET http://localhost:8080/api/transactions/card/1
+```
+
+Returns transaction records associated with the specified metro card.
+
+### Testing with Postman
+
+1. Start the SmartMetro Spring Boot application.
+2. Open Postman.
+3. Select the HTTP method specified for the endpoint.
+4. Enter the complete request URL.
+5. Click **Send** and inspect the JSON response.
+
+**Note:** Use a valid card ID. Recharge and fare deduction requests change the card balance, so use suitable test amounts.
 
 ## Learning Outcomes
 
