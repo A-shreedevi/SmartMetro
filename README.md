@@ -70,6 +70,98 @@ pom.xml
 
    `http://localhost:8080`
 
+## Route API Documentation
+
+Base URL: `http://localhost:8080`
+
+### 1. Add a New Route
+
+- **Method:** POST
+- **Endpoint:** `/api/routes`
+- **Body:** JSON
+
+Example request:
+
+```http
+POST http://localhost:8080/api/routes
+Content-Type: application/json
+```
+
+Example JSON body (adjust the fields to match your `Route` entity):
+
+```json
+{
+  "sourceStation": {
+    "id": 2
+  },
+  "destinationStation": {
+    "id": 3
+  },
+  "distance": 15.0,
+  "estimatedTime": 30,
+  "active": true
+}
+```
+
+Creates a metro route between two existing stations. The station IDs must refer to valid records in your database.
+
+### 2. Retrieve All Routes
+
+- **Method:** GET
+- **Endpoint:** `/api/routes`
+
+Example:
+
+```http
+GET http://localhost:8080/api/routes
+```
+
+Returns the list of routes.
+
+### 3. Retrieve a Route by ID
+
+- **Method:** GET
+- **Endpoint:** `/api/routes/{id}`
+
+Example:
+
+```http
+GET http://localhost:8080/api/routes/1
+```
+
+Returns the route if found; otherwise, returns HTTP 404 Not Found.
+
+### 4. Update a Route
+
+- **Method:** PUT
+- **Endpoint:** `/api/routes/{id}`
+- **Body:** JSON
+
+Example request:
+
+```http
+PUT http://localhost:8080/api/routes/1
+Content-Type: application/json
+```
+
+Use a JSON body matching the `Route` entity, including valid source and destination station references where required.
+
+Updates the specified route.
+
+### 5. Delete a Route
+
+- **Method:** DELETE
+- **Endpoint:** `/api/routes/{id}`
+
+Example:
+
+```http
+DELETE http://localhost:8080/api/routes/1
+```
+
+Deletes the specified route and returns a success message if the operation completes.
+
+**Note:** Use test records when updating or deleting routes. Your entity mappings and database relationships determine the exact accepted JSON fields.
 ## Station API Documentation
 
 Base URL: `http://localhost:8080`
