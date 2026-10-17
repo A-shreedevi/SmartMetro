@@ -70,6 +70,127 @@ pom.xml
 
    `http://localhost:8080`
 
+## User API Documentation
+
+Base URL: `http://localhost:8080`
+
+### 1. Register a User
+
+- **Method:** POST
+- **Endpoint:** `/api/users/register`
+- **Body:** JSON
+
+Example request:
+
+```http
+POST http://localhost:8080/api/users/register
+Content-Type: application/json
+```
+
+Example JSON body (adjust fields to match your `User` entity and validation rules):
+
+```json
+{
+  "name": "Test Passenger",
+  "email": "testpassenger@example.com",
+  "password": "TestPassword123!"
+}
+```
+
+Registers a new user. The service handles password encoding and assigns the passenger role according to the current implementation.
+
+### 2. Retrieve All Users
+
+- **Method:** GET
+- **Endpoint:** `/api/users`
+
+Example:
+
+```http
+GET http://localhost:8080/api/users
+```
+
+Returns the list of users.
+
+### 3. Retrieve a User by ID
+
+- **Method:** GET
+- **Endpoint:** `/api/users/{id}`
+
+Example:
+
+```http
+GET http://localhost:8080/api/users/2
+```
+
+Returns the user if found; otherwise, returns HTTP 404 Not Found.
+
+### 4. Retrieve a User by Email
+
+- **Method:** GET
+- **Endpoint:** `/api/users/email/{email}`
+
+Example:
+
+```http
+GET http://localhost:8080/api/users/email/testpassenger@example.com
+```
+
+Retrieves a user using their email address.
+
+### 5. Update a User
+
+- **Method:** PUT
+- **Endpoint:** `/api/users/{id}`
+- **Body:** JSON
+
+Example:
+
+```http
+PUT http://localhost:8080/api/users/2
+Content-Type: application/json
+```
+
+Send a JSON body matching the `User` entity and its validation requirements to update the specified user.
+
+### 6. Delete a User
+
+- **Method:** DELETE
+- **Endpoint:** `/api/users/{id}`
+
+Example:
+
+```http
+DELETE http://localhost:8080/api/users/2
+```
+
+Deletes the specified user and returns a success message if the operation completes.
+
+### 7. User Login
+
+- **Method:** POST
+- **Endpoint:** `/api/users/login`
+- **Body:** JSON
+
+Example request:
+
+```http
+POST http://localhost:8080/api/users/login
+Content-Type: application/json
+```
+
+Example JSON body:
+
+```json
+{
+  "email": "testpassenger@example.com",
+  "password": "TestPassword123!"
+}
+```
+
+Returns `Login successful` for valid credentials or HTTP 401 Unauthorized for invalid credentials.
+
+**Security note:** These examples use test credentials only. Do not publish real passwords, and avoid exposing password hashes or sensitive user details in API responses. For a production application, add proper authentication and authorization controls.
 ## Route API Documentation
 
 Base URL: `http://localhost:8080`
