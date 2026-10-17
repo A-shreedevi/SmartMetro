@@ -70,6 +70,129 @@ pom.xml
 
    `http://localhost:8080`
 
+## Metro Card API Documentation
+
+Base URL: `http://localhost:8080`
+
+### 1. Create a Metro Card
+
+- **Method:** POST
+- **Endpoint:** `/api/cards`
+- **Body:** JSON
+
+Example request:
+
+```http
+POST http://localhost:8080/api/cards
+Content-Type: application/json
+```
+
+Example JSON body (adjust the fields to match your `MetroCard` entity and database requirements):
+
+```json
+{
+  "cardNumber": "SMC10002",
+  "balance": 500,
+  "status": "ACTIVE"
+}
+```
+
+Creates a metro card and returns the saved card details.
+
+### 2. Retrieve All Metro Cards
+
+- **Method:** GET
+- **Endpoint:** `/api/cards`
+
+Example:
+
+```http
+GET http://localhost:8080/api/cards
+```
+
+Returns the list of metro cards.
+
+### 3. Retrieve a Card by ID
+
+- **Method:** GET
+- **Endpoint:** `/api/cards/{id}`
+
+Example:
+
+```http
+GET http://localhost:8080/api/cards/1
+```
+
+Returns the card if found; otherwise, returns HTTP 404 Not Found.
+
+### 4. Retrieve a Card by Card Number
+
+- **Method:** GET
+- **Endpoint:** `/api/cards/number/{cardNumber}`
+
+Example:
+
+```http
+GET http://localhost:8080/api/cards/number/SMC10001
+```
+
+Retrieves a card using its card number.
+
+### 5. Update Card Status
+
+- **Method:** PATCH
+- **Endpoint:** `/api/cards/{id}/status`
+- **Parameter:** `status` (query parameter)
+
+Example:
+
+```http
+PATCH http://localhost:8080/api/cards/1/status?status=BLOCKED
+```
+
+Updates the card status to the supplied value.
+
+### 6. Block a Metro Card
+
+- **Method:** PATCH
+- **Endpoint:** `/api/cards/{id}/block`
+
+Example:
+
+```http
+PATCH http://localhost:8080/api/cards/1/block
+```
+
+Changes the card status to `BLOCKED`.
+
+### 7. Activate a Metro Card
+
+- **Method:** PATCH
+- **Endpoint:** `/api/cards/{id}/activate`
+
+Example:
+
+```http
+PATCH http://localhost:8080/api/cards/1/activate
+```
+
+Changes the card status to `ACTIVE`.
+
+### 8. Delete a Metro Card
+
+- **Method:** DELETE
+- **Endpoint:** `/api/cards/{id}`
+
+Example:
+
+```http
+DELETE http://localhost:8080/api/cards/1
+```
+
+Deletes the specified card and returns a success message if the operation completes.
+
+**Note:** Use a test card when testing status changes or deletion. The create-card JSON is an example only; your entity relationships may require additional fields.
+
 ## Transaction API Documentation
 
 Base URL: `http://localhost:8080`
