@@ -90,11 +90,14 @@ Content-Type: application/json
 Example JSON body (adjust fields to match your `User` entity and validation rules):
 
 ```json
+
 {
-  "name": "Test Passenger",
-  "email": "testpassenger@example.com",
-  "password": "TestPassword123!"
+   "name": "Test Passenger",
+   "email": "testpassenger@example.com",
+   "phone": "9876543210",
+   "password": "TestPassword123!"
 }
+
 ```
 
 Registers a new user. The service handles password encoding and assigns the passenger role according to the current implementation.
