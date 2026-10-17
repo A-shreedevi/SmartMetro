@@ -70,6 +70,102 @@ pom.xml
 
    `http://localhost:8080`
 
+## Station API Documentation
+
+Base URL: `http://localhost:8080`
+
+### 1. Add a New Station
+
+- **Method:** POST
+- **Endpoint:** `/api/stations`
+- **Body:** JSON
+
+Example request:
+
+```http
+POST http://localhost:8080/api/stations
+Content-Type: application/json
+```
+
+Example JSON body (adjust field names to match your `Station` entity):
+
+```json
+{
+  "name": "Central Station",
+  "location": "Chennai",
+  "line": "Blue Line",
+  "active": true
+}
+```
+
+Adds a new metro station and returns the saved station details.
+
+### 2. Retrieve All Stations
+
+- **Method:** GET
+- **Endpoint:** `/api/stations`
+
+Example:
+
+```http
+GET http://localhost:8080/api/stations
+```
+
+Returns the list of stations.
+
+### 3. Retrieve a Station by ID
+
+- **Method:** GET
+- **Endpoint:** `/api/stations/{id}`
+
+Example:
+
+```http
+GET http://localhost:8080/api/stations/2
+```
+
+Returns the station if found; otherwise, returns HTTP 404 Not Found.
+
+### 4. Update a Station
+
+- **Method:** PUT
+- **Endpoint:** `/api/stations/{id}`
+- **Body:** JSON
+
+Example request:
+
+```http
+PUT http://localhost:8080/api/stations/2
+Content-Type: application/json
+```
+
+Example JSON body:
+
+```json
+{
+  "name": "Updated Central Station",
+  "location": "Chennai",
+  "line": "Blue Line",
+  "active": true
+}
+```
+
+Updates the station with the specified ID. Adjust the JSON fields to match your `Station` entity.
+
+### 5. Delete a Station
+
+- **Method:** DELETE
+- **Endpoint:** `/api/stations/{id}`
+
+Example:
+
+```http
+DELETE http://localhost:8080/api/stations/2
+```
+
+Deletes the specified station and returns a success message if the operation completes.
+
+**Note:** Use test records when updating or deleting stations. The JSON examples are illustrative; your actual entity fields and database relationships determine which fields are accepted.
 ## Metro Card API Documentation
 
 Base URL: `http://localhost:8080`
